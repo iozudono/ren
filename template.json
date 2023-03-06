@@ -3,19 +3,244 @@
   "types": ["character"],
   "htmlFields": ["biography"],
   "character": {
-    "biography": "",
-    "health": {
+    "biography":{
+      "nombre":{
+        "value": "Nombre"
+      },
+      "jugador":{
+        "value": "Jugador"
+      },
+      "sexo":{
+        "value":0
+      },
+      "pelo":{
+        "value":0
+      },
+      "ojos":{
+        "value":0
+      },
+      "altura":{
+        "value":0,
+        "min":0,
+        "max":3
+      },
+      "peso":{
+        "value":0,
+        "min":0,
+        "max":300
+      },
+      "edad":{
+        "value":0,
+        "min":0,
+        "max":500000
+      }
+    },
+    "clase":{},
+    "PVTotal": {
       "value": 10,
       "min": 0,
       "max": 10
     },
-    "power": {
+    "fatigaTotal": {
       "value": 5,
       "min": 0,
       "max": 5
     },
-    "attributes": {},
-    "groups": {}
+    "cansancioTotal": {
+      "value": 5,
+      "min": 0,
+      "max": 5
+    },
+    "attributes":{
+      "fuerza": {
+        "value": 0,
+        "label": "Fuerza",
+        "modifier": []
+      },
+      "FUE": {
+        "value": 0,
+        "label": "Mod. Fuerza",
+        "modifier": []
+      },
+      "destreza": {
+        "value": 0,
+        "label": "Destreza",
+        "modifier": []
+      },
+      "DES": {
+        "value": 0,
+        "label": "Mod. Destreza",
+        "modifier": []
+      },
+      "constitucion": {
+        "value": 0,
+        "label": "Constitución",
+        "modifier": []
+      },
+      "CON": {
+        "value": 0,
+        "label": "Mod. Constitución",
+        "modifier": []
+      },
+      "percepcion": {
+        "value": 0,
+        "label": "Percepción",
+        "modifier": []
+      },
+      "PER": {
+        "value": 0,
+        "label": "Mod. Percepción",
+        "modifier": []
+      },
+      "inteligencia": {
+        "value": 0,
+        "label": "Inteligencia",
+        "modifier": []
+      },
+      "INT": {
+        "value": 0,
+        "label": "Mod. Inteligencia",
+        "modifier": []
+      },
+      "poder": {
+        "value": 0,
+        "label": "Poder",
+        "modifier": []
+      },
+      "POD": {
+        "value": 0,
+        "label": "Mod. Poder",
+        "modifier": []
+      },
+      "voluntad": {
+        "value": 0,
+        "label": "Voluntad",
+        "modifier": []
+      },
+      "VOL": {
+        "value": 0,
+        "label": "Mod. Voluntad",
+        "modifier": []
+      }
+    },
+    "resistencias":{
+      "RFTotal":{},
+      "RFOtros":{},
+      "RRTotal":{},
+      "RROtros":{},
+      "RATotal":{},
+      "RAOtros":{},
+      "RVTotal":{},
+      "RVOtros":{},
+      "resistenciaCondicional":{}
+    },
+    "derivados":{
+      "PVClase":{},
+      "PVOtros":{},
+      "PVIncrementos":{},
+      "fatigaOtros":{},
+      "cansancioOtros":{},
+      "velocidadTotal":{},
+      "velocidadOtros":{},
+      "alcanceTotal":{},
+      "alcanceOtros":{},
+      "carga":{}
+    },
+    "primarias":{
+      "iniciativaTotal":{},
+      "iniciativaClase":{},
+      "iniciativaOtros":{},
+      "iniciativaArma":{},
+      "iniciativaArmadura":{},
+      "CATotal":{},
+      "CAClase":{},
+      "CAOtros":{},
+      "CDTotal":{},
+      "CDClase":{},
+      "CDOtros":{},
+      "aprendizajeKiTotal":{},
+      "aprendizajeKiClase":{},
+      "aprendizajeKiOtros":{},
+      "llevarArmaduraTotal":{},
+      "llevarArmaduraClase":{},
+      "llevarArmaduraOtros":{}
+    },
+    "primariasMagia":{
+      "CMTotal":{},
+      "CMClase":{},
+      "CMOtros":{},
+      "arcanaTotal":{},
+      "arcanaClase":{},
+      "arcanaOtros":{},
+      "AMDTotal":{},
+      "AMDOtros":{},
+      "CATTotal":{},
+      "CATOtros":{},
+      "poderHechizoTotal":{},
+      "poderHechizoOtros":{},
+      "aprendizajeArcanoTotal":{},
+      "aprendizajeArcanoOtros":{}
+    },
+    "primariasPsionico":{
+      "CPTotal":{},
+      "CPClase":{},
+      "CPOtros":{},
+      "potencialPsionicoTotal":{},
+      "potencialPsionicoClase":{},
+      "potencialPsionicoOtros":{},
+      "multiplicadorPsionico":{}
+    },
+    "secundarias":{
+      "secFUETotal":{},
+      "secDESTotal":{},
+      "secPERTotal":{},
+      "secINTTotal":{},
+      "secVOLTotal":{}
+    },
+    "puntosInversion":{
+      "PI_CA":{},
+      "PI_CD":{},
+      "PI_CM":{},
+      "PI_CP":{},
+      "PI_llevarArmadura":{},
+      "PI_potencialPsionico":{},
+      "PI_aprendizajeArcano":{},
+      "PI_arcana":{},
+      "PI_PVIncrementos":{},
+      "PI_CAT":{},
+      "PI_AMD":{},
+      "PI_poderHechizo":{},
+      "PI_aprendizajeKi":{},
+      "PI_canalizar":{},
+
+      "PI_secFUE":{},
+      "PI_secDES":{},
+      "PI_secPER":{},
+      "PI_secINT":{},
+      "PI_secVOL":{}
+    },
+    "clasesArray":{
+      "noAlcanzado":0,
+      "guerrero":1,
+      "acrobata":2,
+      "paladin":3,
+      "maestroCombate":4,
+      "monje":5,
+      "guerreroKi":6,
+      "mago":7,
+      "magoCombate":8,
+      "canalizador":9,
+      "canalizadorCombate":10,
+      "psionico":11,
+      "psionicoCombate":12,
+      "explorador":13,
+      "asesino":14,
+      "barbaro":15,
+      "picaro":16,
+      "picaroArcano":17,
+      "erudito":18,
+      "sinClase":19
+    }
   }
 },
 "Item": {

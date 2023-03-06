@@ -2,34 +2,63 @@
 
     {{!-- Sheet Header --}}
     <header class="sheet-header">
-        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100" />
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.nombre}}" height="100" width="100" />
         <div class="header-fields">
-            <h1 class="charname">
-                <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
+            <h1 class="nombrePJ">
+                <input name="name" type="text" value="{{data.nombre}}" placeholder="Nombre" />
             </h1>
-            <div class="resource">
-                <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
+            <div class="recurso">
+                <input type="number" name="system.PVTotal.value" value="{{systemData.PVTotal.value}}"/>
                 <span> / </span>
-                <input type="number" name="system.health.max" value="{{systemData.health.max}}"/>
+                <input type="number" name="system.PVTotal.max" value="{{systemData.PVTotal.max}}"/>
             </div>
-            <div class="resource">
-                <input type="number" name="system.power.value" value="{{systemData.power.value}}"/>
+            <div class="recurso">
+                <input type="number" name="system.fatigaTotal.value" value="{{systemData.fatigaTotal.value}}"/>
                 <span> / </span>
-                <input type="number" name="system.power.max" value="{{systemData.power.max}}"/>
+                <input type="number" name="system.fatigaTotal.max" value="{{systemData.fatigaTotal.max}}"/>
+            </div>
+            <div class="recurso">
+                <input type="number" name="system.cansancioTotal.value" value="{{systemData.cansancioTotal.value}}"/>
+                <span> / </span>
+                <input type="number" name="system.cansancioTotal.max" value="{{systemData.cansancioTotal.max}}"/>
             </div>
         </div>
     </header>
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">Description</a>
+        <a class="item" data-tab="attributes">Atributos</a>
+        <a class="item" data-tab="description">Descripción</a>
         <a class="item" data-tab="items">Items</a>
-        <a class="item" data-tab="attributes">Attributes</a>
     </nav>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <header class="attributes-header flexrow">
+                <span class="attribute-key">{{localize "SIMPLE.AttributeKey"}}</span>
+                <span class="attribute-value">{{localize "SIMPLE.AttributeValue"}}</span>
+                <span class="attribute-label">{{localize "SIMPLE.AttributeLabel"}}</span>
+                <span class="attribute-dtype">{{localize "SIMPLE.AttributeDtype"}}</span>
+                <a class="attribute-control" data-action="create" data-group="{{group}}"><i class="fas fa-plus"></i></a>
+            </header>
+
+            {{!-- Render the attribute list partial. --}}
+            {{> "systems/ren/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
+
+            {{!-- Render the grouped attributes partial and control. --}}
+            <div class="groups">
+                {{> "systems/ren/templates/parts/sheet-groups.html" attributes=systemData.groupedattributes groups=systemData.groups dtypes=dtypes}}
+
+                <div class="group-controls flexrow">
+                    <input class="group-prefix" type="text" value=""/>
+                    <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
+                </div>
+            </div>
+        </div>
+        
         {{!-- Biography Tab --}}
         <div class="tab description" data-group="primary" data-tab="description">
             {{editor biographyHTML target="system.biography" button=true editable=editable engine="prosemirror"}}
@@ -86,30 +115,6 @@
             <p>
                 <a class="item-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
             </p>
-        </div>
-
-        {{!-- Attributes Tab --}}
-        <div class="tab attributes" data-group="primary" data-tab="attributes">
-            <header class="attributes-header flexrow">
-                <span class="attribute-key">{{localize "SIMPLE.AttributeKey"}}</span>
-                <span class="attribute-value">{{localize "SIMPLE.AttributeValue"}}</span>
-                <span class="attribute-label">{{localize "SIMPLE.AttributeLabel"}}</span>
-                <span class="attribute-dtype">{{localize "SIMPLE.AttributeDtype"}}</span>
-                <a class="attribute-control" data-action="create" data-group="{{group}}"><i class="fas fa-plus"></i></a>
-            </header>
-
-            {{!-- Render the attribute list partial. --}}
-            {{> "systems/worldbuilding/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
-
-            {{!-- Render the grouped attributes partial and control. --}}
-            <div class="groups">
-                {{> "systems/worldbuilding/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
-
-                <div class="group-controls flexrow">
-                    <input class="group-prefix" type="text" value=""/>
-                    <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
-                </div>
-            </div>
         </div>
     </section>
 </form>

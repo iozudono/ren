@@ -1,0 +1,99 @@
+## Análisis Ficha PJ REN
+
+## Este documento presenta una propuesta del diseño de los campos del objeto “Personaje” para la implementación en Foundry del sistema REN.
+## Para mejor trazabilidad y mantenimiento, se recomienda que la implementación use los mismos nombres que los propuestos en este documento.
+## Para cada campo se indicará nombre y tipo con una breve descripción de que es lo que representan. Este documento se irá expandiendo en función de los subsistemas que se añadan.
+## Para una mejor comprensión, se han organizado los campos en diferentes grupos. Desde el punto de vista de la estructura de datos, estos campos pueden estar todos al mismo nivel.
+
+## Nomenclatura
+## Antes de empezar con la descripción de los campos queremos establecer unos principios para la nomenclatura de los campos de tal manera que se mantenga la misma estructura en caso de futuras expansiones de la estructura de datos.
+    1. Los nombres serán en inglés para facilitar la colaboración internacional.
+    2. Como norma general, los nombres de los campos empiezan con minúscula. En caso de tener varias palabras se utilizará “camel case” (e.g. aprendizajeKi, no AprendizajeKi ni aprendizajeki ni aprendizaje_ki). 
+    3. Como excepción a esto son los acrónimos (CA, CD, CM, CAT, etc.) en este caso se utilizarán mayúsculas.
+    4. Para indicar campos en los que se pueden invertir Puntos de Inversión se utilizará el prefijo “PI_”.
+    5. Los siguientes sufijos están “reservados”, por lo que no deberían utilizarse para nombra otros campos:
+        a. Total: Este sufijo se utiliza para hacer referencia al valor final de un campo después de haberle sumado todas las bases y modificadores apropiados.
+        b. Otros: Este sufijo se utiliza para incluir los modificadores por poderes sobrenaturales, rasgos y especies [añadir fuentes de modificadores en caso de necesidad].
+        c. Clase: Este sufijo se utilizar para incluir los modificadores que provienen de la clase del personaje.
+
+General
+## Estos campos están relacionados con la descripción del avatar. No tienen ningún impacto en la jugabilidad. Aparecen en la ficha del personaje, pero no deberían ser utilizados para ningún cálculo.
+altura [float]: Altura del personaje.
+peso [float]: Peso del personaje.
+edad [Integer]: Edad del personaje.
+nombre [String]: Nombre del personaje.
+jugador [String]: Nombre del jugador.
+sexo [String]: Sexo del personaje.
+piel [String]: Color de piel del personaje.
+pelo [String]: Color de pelo del personaje.
+ojos [String]: Color de ojos del personaje.
+
+Base
+clase [array of 20 Interger]: Array de enteros. Cada valor del array corresponde a la clase que ha subido el personaje en los niveles 1 a 20. En caso de querer ampliar el número de niveles se puede incrementar simplemente el tamaño del array. En el anexo Índices de Clases se indica el entero para cada clase.
+iniciativaTotal [Integer], iniciativaOtros [Integer], iniciativaClase [Float]: Iniciativa del personaje.
+iniciativaArma [Integer]: Modificar de iniciativa del arma/s empuñadas.
+IniciativaArmadura [Integer]: Modificador de iniciativa de la armadura portada.
+
+Características
+fuerza, destreza, constitucion, percepcion, inteligencia, poder, voluntad [Integer]: Valor de las siete características.
+FUE, DES, CON, PER, INT, POD, VOL [Integer]: Valor de los modificadores de características para fácil acceso.
+
+Resistencias
+RFTotal [Integer], RRTotal [Integer], RATotal [Integer], RVTotal [Integer], RFOtros [Integer], RROtros [Integer], RAOtrost [Integer], RVOtros [Integer]: Resistencias del personaje.
+resistenciaCondicional Dictionary {String: Integer} [Name: Modifier]: Diccionario con modificadores de resistencias cuando se dan ciertas condiciones, por ejemplo, resistencia a venenos.
+
+Derivados recursos
+PVTotal [Integer], PVClase [Integer], PVOTros [Integer]: Puntos de Vida del personaje.
+PVIncrementos [Integer]: Número de incrementos de Vida adquiridos.
+fatigaTotal [Integer], fatigaOtros [Integer]: Fatiga del personaje.
+cansancioTotal [Integer], cansancioOtros [Integer]: Cansancio del personaje.
+velocidadTotal [Integer], velocidadOtros [Integer]: Velocidad de movimiento del personaje. 
+alcanceTotal [Integer], alcanceOtros [Integer]: Alcance máximo de los ataques sobrenaturales.
+carga [Integer]: Carga máxima del personaje.
+
+Primarias
+CATotal [Integer], CAOtros [Integer], CAClase[Float]: Capacidad de Ataque del personaje.
+CDTotal[Integer], CDOtros [Integer], CDClase[Float]: Capacidad de Defensa del personaje.
+CMTotal[Integer], CMOtros [Integer], CMClase[Float]: Capacidad Mágica del personaje.
+CPTotal[Integer], CPOtros [Integer], CPClase[Float]: Capacidad Psiónica del personaje.
+aprendizajeKiTotal, aprendizajeKiOtros
+llevarArmaduraTotal, llevarArmaduraOtros: Integer
+arcanaTotal, arcanaOtros 
+AMDTotal, AMDOtros
+CATTotal, CATOtros
+poderHechizoTotal, poderHechizoOtros
+aprendizajeArcanoTotal, aprendizajeArcanoOtros
+canalizarTotal, canalizarOtros
+potencialPsionicoTotal, potencialPsionicoOtros, psionicMultiplier??
+aprendizajeKiClase, llevarArmaduraClase, arcanaClase, potencialPsionicoClase: Float
+
+Secundarias
+secFUETotal, secDESTotal, secPERTotal, secINTTotal, secVOLTotal: Dictionary {String: Integer}
+secFUEClase, secDESClase, secPERClase, secINTClase, secVOLClase: Dictionary {String: Integer}
+secFUEOtros, secDESOtros, secPEROtros, secINTOtros, secVOLOtros: Dictionary {String: Integer}
+Puntos de Inversión
+IP_CA, IP_CD, IP_CM, IP_CP, IP_llevarArmadura, IP_potencialPsionico, IP_aprendizajeArcano, IP_Arcana, IP_PVIncrementos, IP_CAT, IP_AMD, IP_poderHechizo, IP_aprendizajeKi, IP_canalizar, IP_potencialPsionico: Array of 20 integers
+IP_SecFUE, IP_SecDES, IP_SerPER, IP_SecINT, IP_SecVOL: Dictionary {String: Array of 20 Integers}
+
+Anexo I: Indices de Clases
+En este anexo se indican a que clase pertenece cada valor en el array:
+0: Nivel todavía no alcanzado.
+1: Guerrero.
+2: Acróbata.
+3: Paladín.
+4: Maestro de Combate.
+5: Monje.
+6: Guerrero Ki
+7: Mago.
+8: Mago de Combate.
+9: Canalizador.
+10: Canalizador de Combate.
+11: Psiónico.
+12: Psiónico de Combate.
+13: Explorador.
+14: Asesino.
+15: Bárbaro.
+16: Pícaro.
+17: Pícaro Arcano.
+18: Erudito.
+19: Sin Clase.

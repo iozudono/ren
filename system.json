@@ -28,8 +28,8 @@
   },
   "gridDistance": 2,
   "gridUnits": "m",
-  "primaryTokenAttribute": "PV",
-  "secondaryTokenAttribute": "Kyu",
-  "manifest": "https://raw.githubusercontent.com/iozudono/ren/master/system.json",
-  "download": "https://github.com/iozudono/ren/archive/refs/tags/release-072.zip"
+  "primaryTokenAttribute": "PVTotal",
+  "secondaryTokenAttribute": "fatigaTotal",
+  "manifest": "",
+  "download": ""
 }
